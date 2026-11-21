@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Panels — GTA-style cover art maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="topbar">
+  <div id="brand">
+    <h1>Vice Panels</h1>
+    <p>Turn your photos into GTA-style cover art. Panels, a colour grade, bold lettering — exported as a PNG, all on your own machine.</p>
+  </div>
+  <span id="photo-count">0 photos loaded</span>
+</header>
+
+<div id="workspace">
+  <aside id="controls">
+    <section id="photos-panel" class="control-group">
+      <h2>1 · Photos</h2>
+      <label id="photo-drop" for="photo-input">Choose photos from your machine</label>
+      <input id="photo-input" type="file" accept="image/*" multiple>
+      <button id="sample-button" type="button">Reload the sample photos</button>
+      <div id="photo-strip" aria-label="Loaded photos"></div>
+      <p class="hint">Click a panel on the cover to select it, then click a photo here to fill it — or use “Next photo”.</p>
+    </section>
+
+    <section id="layout-panel" class="control-group">
+      <h2>2 · Panels</h2>
+      <div id="layout-list" class="choice-list"></div>
+    </section>
+
+    <section id="grade-panel" class="control-group">
+      <h2>3 · Colour grade</h2>
+      <div id="grade-list" class="choice-list"></div>
+    </section>
+
+    <section id="frame-panel" class="control-group">
+      <h2>4 · Frame &amp; finish</h2>
+      <div id="size-list">
+        <label><input type="radio" name="size" value="1080x1080"> Square · 1080 × 1080</label>
+        <label><input type="radio" name="size" value="1080x1350"> Portrait · 1080 × 1350</label>
+        <label><input type="radio" name="size" value="1920x1080" checked> Landscape · 1920 × 1080</label>
+      </div>
+      <p id="selected-label" class="hint">Loading…</p>
+      <label class="slider-row">Photo zoom in selected panel
+        <input id="zoom-range" type="range" min="100" max="400" value="100">
+      </label>
+      <div class="button-row">
+        <button id="center-button" type="button">Centre photo</button>
+        <button id="cycle-button" type="button">Next photo</button>
+      </div>
+      <label class="text-row">Cover title
+        <input id="caption-title" type="text" maxlength="26" value="Neon Harbor">
+      </label>
+      <label class="text-row">Subtitle
+        <input id="caption-subtitle" type="text" maxlength="40" value="Vice Panels Original">
+      </label>
+      <label class="text-row">Corner badge
+        <input id="caption-badge" type="text" maxlength="18" value="Est. 2026">
+      </label>
+      <button id="export-button" type="button">Export cover as PNG</button>
+    </section>
+  </aside>
+
+  <main id="stage-wrap">
+    <canvas id="stage-canvas" width="920" height="518"></canvas>
+    <p id="stage-hint">Drag a photo inside its panel to position it · scroll to zoom · the dashed outline marks the selected panel</p>
+  </main>
+</div>
+
+<footer id="colophon">
+  <p>Vice Panels is an original fan-made tool. It is not affiliated with Rockstar Games or Grand Theft Auto, and uses no artwork, logos or fonts from any game. Your photos never leave your browser.</p>
+</footer>
+
+<script type="module" src="src/app.js"></script>
+</body>
+</html>
